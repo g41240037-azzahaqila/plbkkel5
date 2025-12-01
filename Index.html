@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>HTML Sederhana</title>
+  <style>
+    :root{--accent:#3b82f6;--bg:#f8fafc;--card:#ffffff}
+    *{box-sizing:border-box;font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial}
+    body{margin:0;background:var(--bg);color:#0f172a;line-height:1.4}
+    header{background:linear-gradient(90deg,#eef2ff,transparent);padding:18px 20px}
+    .container{max-width:920px;margin:20px auto;padding:0 16px}
+    .nav{display:flex;justify-content:space-between;align-items:center}
+    .brand{font-weight:700;color:var(--accent)}
+    .hero{display:grid;grid-template-columns:1fr;gap:12px;align-items:center;margin-top:16px}
+    .card{background:var(--card);padding:18px;border-radius:12px;box-shadow:0 6px 18px rgba(12,15,20,0.06)}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-top:12px}
+    button{background:var(--accent);border:0;color:white;padding:10px 14px;border-radius:8px;cursor:pointer}
+    input, textarea{width:100%;padding:10px;border-radius:8px;border:1px solid #e6edf3}
+    footer{text-align:center;font-size:13px;color:#475569;margin:28px 0}
+    @media(min-width:720px){.hero{grid-template-columns:1fr 320px}}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="brand">HTML Sederhana</div>
+      <nav>
+        <a href="#" style="margin-right:12px;color:#334155;text-decoration:none">Home</a>
+        <a href="#features" style="color:#334155;text-decoration:none">Fitur</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div class="card">
+        <h1 style="margin:0 0 8px">Halo! ini contoh HTML sederhana</h1>
+        <p style="margin:0 0 12px;color:#475569">Template ini punya header, kartu (card), grid, dan form singkat. Bisa dipakai sebagai starting point.</p>
+        <div class="grid">
+          <div class="card"> <strong>Fitur 1</strong><p style="margin-top:8px;color:#475569">Deskripsi singkat fitur.</p></div>
+          <div class="card"> <strong>Fitur 2</strong><p style="margin-top:8px;color:#475569">Deskripsi singkat fitur.</p></div>
+          <div class="card"> <strong>Fitur 3</strong><p style="margin-top:8px;color:#475569">Deskripsi singkat fitur.</p></div>
+        </div>
+      </div>
+
+      <aside class="card">
+        <h3 style="margin-top:0">Coba tombol ini</h3>
+        <p style="margin:0 0 12px;color:#475569">Klik tombol untuk lihat notifikasi sederhana.</p>
+        <button id="btn">klik aku</button>
+      </aside>
+    </section>
+
+    <section id="features" class="card" style="margin-top:14px">
+      <h2 style="margin-top:0">Form Kontak</h2>
+      <form id="contactForm">
+        <label>Nama</label>
+        <input type="text" id="name" placeholder="masukkan nama">
+        <label style="margin-top:8px;display:block">Pesan</label>
+        <textarea id="message" rows="4" placeholder="tulis pesanmu"></textarea>
+        <div style="margin-top:10px;display:flex;gap:8px;justify-content:flex-end">
+          <button type="submit">Kirim</button>
+          <button type="button" id="clear" style="background:#94a3b8">Bersihkan</button>
+        </div>
+      </form>
+    </section>
+
+  </main>
+
+  <footer>
+    dibuat dengan sederhana · contoh untuk latihan
+  </footer>
+
+  <script>
+    document.getElementById('btn').addEventListener('click', function(){
+      alert('halo! kamu klik tombol');
+    });
+
+    document.getElementById('contactForm').addEventListener('submit', function(e){
+      e.preventDefault();
+      const name = document.getElementById('name').value || 'Anonim';
+      const msg = document.getElementById('message').value || '(tidak ada pesan)';
+      alert('terima kasih, ' + name + '! pesan: ' + msg);
+      this.reset();
+    });
+
+    document.getElementById('clear').addEventListener('click', function(){
+      document.getElementById('contactForm').reset();
+    });
+  </script>
+</body>
+</html>
